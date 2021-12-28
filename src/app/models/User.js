@@ -9,6 +9,7 @@ const User = new Schema({
     birthday: {type: Date},
     position: {type: Number, default: 0},
     experience: {type: Number, default: 0},
+    degree: {type: Number, default: 0},
     address: {type: String},
     account: {type:String},
     start_date: {type:Date, default: Date.now},

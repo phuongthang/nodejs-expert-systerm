@@ -8,7 +8,9 @@ class UserController{
      * @param {*} next
      */
     index(req, res, next){
-        res.send('Hello World');
+        User.find({})
+            .then(users => res.json({status:200, message:"Tạo user thành công", data: users}))
+            .catch(next)
     }
 
     /**
@@ -19,7 +21,13 @@ class UserController{
      */
     store(req, res, next){
         const user = new User(req.body.data);
-        user.save();
+        user.save((err)=>{
+            if(err){
+                res.json({status:500,message:"Tạo user thất bại"});
+            }
+            res.json({status:200, message:"Tạo user thành công"});
+        });
+
     }
 };
 
